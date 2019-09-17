@@ -14,6 +14,7 @@ class Node {
 
     public:
     Node(string prefix="", bool isword=false): prefix(prefix), isword(isword) {};
+    ~Node();
 
     bool get_isword();
 
@@ -25,6 +26,7 @@ class Node {
     bool has_child(char c);
     Node * operator[](char c);
     void set_word(char c);
+    
 };
 
 class autocomplete {
@@ -34,6 +36,7 @@ class autocomplete {
     void insert_string(string s);
     public:
     autocomplete(vector<string> strings);
+    ~autocomplete();
     vector<string> get_autocomplete(string prefix);
     vector<string> find_all_words(Node * curr);
 };

@@ -12,6 +12,14 @@ int _main() {
     return 0;
 }
 
+Node::~Node() {
+    cout << "BEGIN Deleting " << this->prefix << endl;
+    for (auto & p : children) {
+        delete p.second;
+    }
+    cout << "END Deleting " << this->prefix << endl;
+}
+
 
 bool Node::get_isword() {
     return isword;
@@ -89,4 +97,8 @@ vector<string> autocomplete::find_all_words(Node * curr) {
         }
     }
     return results;
+}
+
+autocomplete::~autocomplete() {
+    delete trie;
 }
