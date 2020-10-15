@@ -1,6 +1,5 @@
-#include "2sum/2sum.hpp"
-
+// #include "min_classrooms/min_classrooms.hpp"
+int _main();
 int main() {
     return _main();
-    return 0;
 }
