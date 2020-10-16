@@ -34,23 +34,23 @@ Result larget_bst(const Node* root) {
         res = Result(true, 1);
     } else if (root->left == nullptr) {
         Result r = larget_bst(root->right);
-        bool is_bst = r.is_bst && (root->val < root->right->val);
+        bool is_bst = r.is_bst && (root->val <= root->right->val);
         res = is_bst ? Result(true, r.size+1) : Result(false, r.size);
     } else if (root->right == nullptr) {
         Result l = larget_bst(root->left);
-        bool is_bst = l.is_bst && (root->val > root->left->val);
+        bool is_bst = l.is_bst && (root->val >= root->left->val);
         res = is_bst ? Result(true, l.size+1) : Result(false, l.size);
     } else {
         Result r = larget_bst(root->right);
         Result l = larget_bst(root->left);
-        bool is_bst = l.is_bst && (root->val > root->left->val) && (root->val < root->right->val);
+        bool is_bst = l.is_bst && (root->val >= root->left->val) && (root->val <= root->right->val);
         res = is_bst ? Result(true, r.size + l.size + 1) : Result(false, max(r.size, l.size));
     }
     return res;
 }
 
 int _main() {
-    Node* root = new Node(0, new Node(-1), new Node(1));
+    Node* root = new Node(0, new Node(0), new Node(1));
     root = new Node(2, root, nullptr);
     cout << larget_bst(root).size << endl;
     return 1;
