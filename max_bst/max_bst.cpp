@@ -14,6 +14,8 @@ struct Node {
 
     Node(int val, Node* left=nullptr, Node* right=nullptr): val(val), left(left), right(right) {}
     ~Node() {
+        delete left;
+        delete right;
         left = nullptr;
         right = nullptr;
         delete this;
@@ -53,5 +55,6 @@ int _main() {
     Node* root = new Node(0, new Node(0), new Node(1));
     root = new Node(2, root, nullptr);
     cout << larget_bst(root).size << endl;
-    return 1;
+    delete root;
+    return 0;
 }
