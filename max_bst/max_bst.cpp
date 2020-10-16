@@ -18,7 +18,6 @@ struct Node {
         delete right;
         left = nullptr;
         right = nullptr;
-        delete this;
     }
 };
 
