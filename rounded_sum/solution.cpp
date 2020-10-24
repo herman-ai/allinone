@@ -11,7 +11,23 @@ In this case you cannot do better than [1, 2, 5], which has an absolute differen
 [1.3, 2.3, 4.4] = 8.0
 [0.3, 0.3, 0.4] = SUM needs to be 1
 [0,   0 ,  1]  
-[1,   2,   5] 
+[1,   2,   5]
+
+import math
+in = [1.3, 2.3, 4.4]
+in = sort(in, key=lambda x:x-math.floor(x))
+print(in)
+rounded_sum = round(sum(in))
+base_sum = sum([math.floor(i) for i in in])
+remainder = rounded_sum - base_sum
+for i in range(len(in)-1, -1, -1):
+    if len(in)-i <= remainder:
+        in[i] = math.ceil(in[i])
+    else:
+        in[i] = math.floor(in[i])
+
+print(in)
+
 */
 
 #include <vector>
