@@ -22,13 +22,13 @@ def ways_to_climb(n, step_dist, steps={1,2}):
         return None   # No possible way
     for step in steps:
         sd = deepcopy(step_dist)
-        sd[step] += 1
+        sd.append(step)
         _sd = ways_to_climb(n-step, sd, steps)
         if _sd is not None:
             rval.extend(_sd)
     return rval
 
 if __name__ == "__main__":
-    sd = ways_to_climb(4, {1:0, 2:0}, steps={1,2})
+    sd = ways_to_climb(4, [], steps={1,2})
     print(sd)
     print(f'Number of ways = {len(sd)}')
