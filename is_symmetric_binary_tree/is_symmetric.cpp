@@ -1,3 +1,5 @@
+//Given a binary tree (Not balanced), write a method that returns if the tree is symmetric or not
+
 #include <iostream>
 #include <deque>
 
