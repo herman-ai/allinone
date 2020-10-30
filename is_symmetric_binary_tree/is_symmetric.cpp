@@ -65,7 +65,7 @@ bool is_symmetric(const Node *root) {
     return true;
 }
 
-int main() {
+int _main() {
     Node * root = new Node(0);
     root->add_left(new Node(3));
     root->add_right(new Node(3));
