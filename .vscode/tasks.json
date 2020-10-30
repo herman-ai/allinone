@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "rounded sum",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++11",
+                "-stdlib=libc++",
+                "main.cpp",
+                "rounded_sum/solution.cpp",
+                "-o",
+                "rounded_sum/solution.out",
+                "--debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Symmetric Binary Tree",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++11",
+                "-stdlib=libc++",
+                "main.cpp",
+                "is_symmetric_binary_tree/is_symmetric.cpp",
+                "-o",
+                "is_symmetric_binary_tree/solution.out",
+                "--debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
