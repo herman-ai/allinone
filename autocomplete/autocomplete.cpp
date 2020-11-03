@@ -1,7 +1,11 @@
-#include "autocomplete.hpp"
 #include <iostream>
+#include <queue>
+#include "autocomplete.hpp"
 
-int _main() {
+
+using namespace std;
+
+int main() {
     vector<string> strings = {"abc", "abbc", "def", "a", "acg"};
     auto a = autocomplete(strings);
     auto results = a.get_autocomplete("ab");
@@ -9,6 +13,7 @@ int _main() {
     for (auto w : results) {
         cout << w << endl;
     }
+    cout << "****" << endl;
     return 0;
 }
 
@@ -19,7 +24,6 @@ Node::~Node() {
     }
     cout << "END Deleting " << this->prefix << endl;
 }
-
 
 bool Node::get_isword() {
     return isword;
