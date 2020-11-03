@@ -36,7 +36,7 @@ string Node::get_prefix() {
 unordered_map<char, Node*> Node::get_children() {
     return children;
 }
-void Node::add_child(string prefix, char c, bool isword=false) {
+void Node::add_child(string prefix, char c, bool isword) {
     children[c] = new Node(prefix+c, isword);
 }
 
@@ -70,6 +70,7 @@ void autocomplete::insert_string(string s) {
 }
 
 autocomplete::autocomplete(vector<string> strings) {
+    trie = new Node("", false);
     for (auto s : strings) {
         insert_string(s);
     }
