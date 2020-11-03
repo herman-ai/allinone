@@ -36,7 +36,7 @@ string Node::get_prefix() {
 unordered_map<char, Node*> Node::get_children() {
     return children;
 }
-void Node::add_child(string prefix, char c, bool isword) {
+void Node::add_child(string prefix, char c, bool isword=false) {
     children[c] = new Node(prefix+c, isword);
 }
 
@@ -55,7 +55,7 @@ void Node::set_word(char c) {
 
 void autocomplete::insert_string(string s) {
     auto curr = trie;
-    string prefix="";
+    string prefix=trie->get_prefix();
     for (int i=0; i<s.size(); i++) {
         char c = s[i];
         if (!curr->has_child(c)) {
@@ -64,7 +64,7 @@ void autocomplete::insert_string(string s) {
         if (i==s.size()-1) {
             curr->set_word(c);
         }
-        curr = curr->get_children()[c];
+        curr = (*curr)[c];
         prefix += s[i];
     }
 }
