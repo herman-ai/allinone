@@ -1,6 +1,5 @@
 *.out
 *.plist
-*.json
 *.code
 *.code-workspace
 
