@@ -14,10 +14,6 @@
                 "rounded_sum/solution.out",
                 "--debug"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
         },
         {
             "label": "Symmetric Binary Tree",
@@ -32,10 +28,6 @@
                 "is_symmetric_binary_tree/solution.out",
                 "--debug"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
         },
         {
             "label": "Build",
