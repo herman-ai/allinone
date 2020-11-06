@@ -5,7 +5,7 @@ using namespace std;
 
 bool twosum(int *a, int n, int k);
 
-int _main() {
+int main() {
     int n, k;
     int *a;
     cout << " Enter the number of elements in the array :";
