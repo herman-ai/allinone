@@ -53,11 +53,12 @@ def make_bst():
 
 if __name__ == "__main__":
     root = make_bst()
-    val = -14
+    val = 6
     f = find_floor(root, val)
     print(f'floor = {f}, for {val}')
     c = find_ceiling(root, val)
     print(f'ceiling = {c}, for {val}')
 
     
-
+# TODO: We can optimize this further by saving the node from which the 
+# search for ceiling needs to be conducted in the find_floor method
