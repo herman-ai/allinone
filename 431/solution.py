@@ -49,13 +49,15 @@ def check_valid(s):
     prev_state = 0
     i = 1
 
-    for i in range(1, len(s)-1):
+    for i in range(1, len(s)):
         new_state = get_state(s[i])
         if not is_valid_transition(prev_state, new_state):
             return False
         prev_state = new_state
+    if new_state != 4:
+        return False
     return True
 
 if __name__ == "__main__":
-    sentence = "INvalid sentence."
-    print(f"Is this a valid sentence ? {check_valid(sentence)}")
+    sentence = "Ivalid sentence‽"
+    print(f"Is this a valid sentence {check_valid(sentence)}")
