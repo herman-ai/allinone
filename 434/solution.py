@@ -5,65 +5,59 @@ class Node:
         self.right = None
 
 
-def find_floor(node):
-    rval = None
-    if node.left is not None:
-        curr = node.left
-        while curr.right is not None:
-            curr = curr.right
-        rval = curr.value
-    return rval
-
-def find_ceiling(node):
-    rval = None
-    if node.right is not None:
-        curr = node.right
-        while curr.left is not None:
-            curr = curr.left
-        rval = curr.value
-    return rval
-
-
-def find_floor_and_ceiling(root, value):
+def find_floor(root, value):
     curr = root
-    floor, ceiling = (None, None)
-    f, c = False, False
-    while not f and not c:
-        if curr.value == value:
-            floor, ceiling = find_floor(curr), find_ceiling(curr)
-            c, f = True, True
-        elif value < curr.value:
-            ceiling = curr.value
-            if curr.left is not None:
-                curr = curr.left
-            else:
-                c = True
+    floor = None
+    found = False
+    while not found and curr is not None:
+        if value <= curr.value:
+            curr = curr.left
         elif value > curr.value:
             floor = curr.value
-            if curr.right is not None:
-                curr = curr.right
-            else:
-                f = True
-    return floor, ceiling
+            curr = curr.right
+    return floor
+
+
+def find_ceiling(root, value):
+    curr = root
+    ceiling = None
+    found = False
+    while not found and curr is not None:
+        if value < curr.value:
+            ceiling = curr.value
+            curr = curr.left
+        elif value >= curr.value:
+            curr = curr.right
+    return ceiling
 
 
 def make_bst():
-    leafs = [Node(-3), Node(-1), Node(1), Node(3)]
-    level2 = [Node(-2), Node(2)]
-    root = Node(0)
-    root.left = level2[0]
-    root.right = level2[1]
-    level2[0].left = leafs[0]
-    level2[0].right = leafs[1]
-    level2[1].left = leafs[2]
-    level2[1].right = leafs[3]
+    root = Node(1)
+    root.left = Node(-10)
+    root.right = Node(10)
+    root.left.left = Node(-15)
+    root.left.right = Node(-5)
+    root.left.left.left = Node(-17)
+    root.left.left.right = Node(-12)
+    root.left.right = Node(-5)
+    root.left.right.left = Node(-8)
+    root.left.right.right = Node(-2)
+
+    root.right.left = Node(5)
+    root.right.right = Node(15)
+    root.right.left.left = Node(2)
+    root.right.left.right = Node(8)
+    root.right.right.left = Node(12)
+    root.right.right.right = Node(17)
     return root
 
 if __name__ == "__main__":
     root = make_bst()
-    val = 2.1
-    f, c = find_floor_and_ceiling(root, val)
-    print(f'floor = {f}, ceiling = {c} for {val}')
+    val = -14
+    f = find_floor(root, val)
+    print(f'floor = {f}, for {val}')
+    c = find_ceiling(root, val)
+    print(f'ceiling = {c}, for {val}')
 
     
 
